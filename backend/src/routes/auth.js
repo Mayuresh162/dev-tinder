@@ -34,8 +34,11 @@ authRouter.post("/login", async (req, res) => {
       res.cookie("accessToken", token, {
         maxAge: 21600000,
       });
+      const userObj = loggedInUser.toObject();
+      delete userObj.password;
       res.json({
-        message: `${loggedInUser.firstName} loggedin successfully!`,
+        message: `${userObj.firstName} loggedin successfully!`,
+        data: userObj,
       });
     } else {
       throw new Error("Invalid credentials");
