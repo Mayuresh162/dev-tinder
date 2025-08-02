@@ -28,8 +28,12 @@ profileRouter.patch(
 
       await loggedInUser.save();
 
+      const userObj = loggedInUser.toObject();
+      delete userObj.password;
+
       res.json({
         message: `${loggedInUser.firstName}, your profile updated successfuly`,
+        data: loggedInUser,
       });
     } catch (err) {
       res.status(400).send({ message: err.message });
