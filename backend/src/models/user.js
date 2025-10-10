@@ -73,6 +73,13 @@ const userSchema = new Schema(
         message: "Minimum 5 skills are required",
       },
     },
+    isPremium: {
+      type: Boolean,
+      default: false,
+    },
+    membershipType: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
